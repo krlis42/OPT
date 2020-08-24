@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>API 文档</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}">
+    
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='navbar2.css') }}">
+	<style>
+		#top{
+		margin-top: 5px;
+		}
+		#photo{
+		padding: 0px;
+		margin-top: 5px;
+		margin-left: 0px;
+		float: left;
+		}
+		#poem{
+		padding: 0px;
+		margin-top: 5px;
+		margin-left: 50px;
+		float: left;
+		height: 450px; 
+		width: 500px;
+		}
+		#poem_content{
+		overflow-y: auto;
+		height: 260px;
+		width: 480px;
+		}
+		#footer{
+		float: left;
+		clear:left;
+		font-size:15px
+		}
+		#customers
+  {
+  font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+  width:100%;
+  border-collapse:collapse;
+  }
+
+#customers td, #customers th 
+  {
+  font-size:1em;
+  border:1px solid #118181;
+  padding:3px 7px 2px 7px;
+  }
+
+#customers th 
+  {
+  font-size:1.1em;
+  text-align:left;
+  padding-top:5px;
+  padding-bottom:4px;
+  background-color:#118181;
+  color:#ffffff;
+  }
+
+#customers tr.alt td 
+  {
+  color:#000000;
+  background-color:rgb(211, 232, 242);
+  }
+		</style>
+</head>
+
+<body>
+	<div id="mySidepanel" class="sidepanel" style="background-color:aliceblue">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+	  <a href="index">回到首页</a>
+	  <a href="api1">Author API</a>
+      <a href="api2">lists API </a>
+      <a href="contact">More</a>
+    </div>
+      
+    <div id="main">
+      <button class="openbtn" onclick="openNav()" style="background-color:lightblue">☰ 导航</button>  
+    </div>
+	
+	<div class="container">
+	<h2 id="top">API 文档</h2>
+	<h4 id="top" style="font-family: Trattatello, fantasy;">Of Poetry in Tang dynasty</h4>
+	
+    <h2 id="photo">
+        <img style="height: 450px; width: 500px;" alt="Avatar" src="{{ url_for('static', filename='images/api_lists.jpg') }}">
+	</h2>
+	
+	<div class="text" id="poem">
+		<h3>
+		</h3>
+		<h5>
+			GET /lists
+			</h5>
+		<hr>
+
+		{% block poem %}
+		<table id="customers">
+			<tr>
+			<th>Attribute</th>
+			<th>Type</th>
+			<th>Required</th>
+			<th>Description</th>
+			</tr>
+			
+			<tr>
+			<td>。。。</td>
+			<td>。。。</td>
+			<td>。。。</td>
+			<td>。。。</td>
+			</tr>
+			
+			<tr class="alt">
+			<td>。。。</td>
+			<td>。。</td>
+			<td>。。</td>
+			<td>。。</td>
+			</tr>	
+		</table>
+		<br />
+		<br />
+		<br />
+		<h5>
+			Example shown in left:
+			</h5>
+			<code>
+				curl http://127.0.0.1:5000/lists
+			</code>
+		{% endblock %}	
+    </div>
+	</div> 
+	
+	<footer class="container">
+		<small id="footer">
+		&copy;2020
+		<a href="https://py.101.camp/">OPT from 101camp6py</a>
+		</small>
+	</footer>
+    <script> 
+		/* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
+		function openNav() {
+			document.getElementById("mySidepanel").style.width = "250px";
+			}
+
+		function closeNav() {
+ 			document.getElementById("mySidepanel").style.width = "0";
+			}
+
+    </script> 
+</body>
+
+</html>
+
+

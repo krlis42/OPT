@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>唐诗300首主页</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}">
+    
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='navbar2.css') }}">
+	<style>
+		#top{
+		margin-top: 5px;
+		}
+		#photo{
+		padding: 0px;
+		margin-top: 5px;
+		margin-left: 0px;
+		float: left;
+		}
+		#poem{
+		padding: 0px;
+		margin-top: 5px;
+		margin-left: 50px;
+		float: left;
+		height: 450px; 
+		width: 500px;
+		}
+		#poem_content{
+		overflow-y: auto;
+		height: 260px;
+		width: 480px;
+		}
+		#footer{
+		float: left;
+		clear:left;
+		font-size:15px
+		}
+	
+		</style>
+</head>
+
+<body>
+	<div id="mySidepanel" class="sidepanel" style="background-color:aliceblue">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+      <a href="index">回到首页</a>
+      <a href="poem">更多诗歌</a>
+      <a href="opt">About us</a>
+      <a href="contact">Contact</a>
+    </div>
+      
+    <div id="main">
+      <button class="openbtn" onclick="openNav()" style="background-color:lightblue">☰ 导航</button>  
+    </div>
+	
+	<div class="container">
+	<h2 id="top">诗意可栖居</h2>
+	<h4 id="top" style="font-family: Trattatello, fantasy;">Of Poetry in Tang dynasty</h4>
+	
+    <h2 id="photo">
+        <img style="height: 450px; width: 500px;" alt="Avatar" src="{{ url_for('static', filename='images/'+photo_index|string+'.jpg') }}">
+	</h2>
+	
+	<div class="text" id="poem">
+		<h3>
+		{{today[1]}}
+		</h3>
+		<h5 style="font-family: 华文仿宋;">
+			——— 每晚八点四十二，给灵魂片刻自由。
+			</h5>
+		<hr>
+
+		{#<p>共有 {{ data|length }} 首诗</p>#}
+		{% block poem %}
+		<h4 style="font-family: 微软雅黑;">{{ data[poem_index].title }}</h4>
+		<p></p>
+		<h5>{{ data[poem_index].author }} 【{{ data[poem_index].dynasty }}】</h5>
+		<br />
+		<div class="scroll" id="poem_content">
+		{% for j in range(data[poem_index]['paragraphs']|length) %}
+		<p style="font-family: 微软雅黑;">{{ data[poem_index]['paragraphs'][j] }}</p>       
+		{% endfor %}   {# 使用 endfor 标签结束 for 语句 #}
+		{% endblock %}
+		</div>
+    </div>
+	</div> 
+	
+	<footer class="container">
+		<small id="footer">
+		&copy;2020
+		<a href="https://py.101.camp/">OPT from 101camp6py</a>
+		</small>
+	</footer>
+    <script> 
+		/* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
+		function openNav() {
+			document.getElementById("mySidepanel").style.width = "250px";
+			}
+
+		function closeNav() {
+ 			document.getElementById("mySidepanel").style.width = "0";
+			}
+
+    </script> 
+</body>
+
+</html>
+
+

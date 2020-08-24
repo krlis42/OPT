@@ -1,0 +1,150 @@
+<!DOCTYPE html> 
+
+<html lang="zh">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1"> 
+	<title> 
+		About OPT
+    </title> 
+	<link rel="icon" href="{{ url_for('static', filename='favicon.png') }}">	
+
+	  <link rel="stylesheet" href="{{ url_for('static', filename='navbar2.css') }}">
+	<style> 
+		h1 { 
+			color: rgb(0, 55, 128); 
+		} 
+	
+		/* column pic */ 
+		.column { 
+			float: left; 
+			width: 25%; 
+			padding: 10px; 
+		} 
+	
+		/* Style the images of gallery */ 
+		.column img { 
+			opacity: 0.6; 
+			cursor: zoom-in; 
+			padding: 5px; 
+		} 
+		
+		.column img:hover { 
+			opacity: 1; 
+			transform: scale(1.1); 
+			transition: 0.5s; 
+		} 
+		
+		.column img:active { 
+			opacity: 1; 
+		} 
+	
+		* { 
+			box-sizing: border-box; 
+		} 
+		
+		/* Expanding image text */ 
+		#geeks { 
+			position: absolute; 
+			left: 200px; 
+			padding-top: 100px; 
+			font-size: 28px; 
+			color: #EFECE9; 
+		} 
+		
+		#geeks:hover { 
+			color: #ADE3BD; 
+			cursor: wait; 
+		} 
+	</style> 
+</head> 
+
+<body> 
+	<div id="mySidepanel" class="sidepanel" style="background-color:aliceblue">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+		<a href="index">回到首页</a>
+		<a href="poem">更多诗歌</a>
+		<a href="opt">About us</a>
+		<a href="contact">Contact</a>
+	  </div>
+	  
+	  <div id="main">
+		<button class="openbtn" onclick="openNav()" style="background-color:lightblue">☰ 导航</button>  
+	  </div>
+
+	<div style="text-align:center" style="font-family: 微软雅黑;"> 
+		<h1 style="font-family: 微软雅黑;">101camp 6py</h1> 
+		<h2 style="font-family: 微软雅黑;">奥林匹克队</h2> 
+		<h2 style="font-family: 微软雅黑;">慢慢来，比较快</h2> 
+		<h3 style="font-family: 微软雅黑;">Olympic Team，5环，5个人~ </h3> 
+	</div> 
+
+	<!-- gallery pic -->
+	<div class="row"> 
+		<div id="geeks"></div> 
+
+		<div class="column"> 
+            <img src="{{ url_for('static', filename='images/wechat_erica.jpg') }}"
+            alt="Nature" style="width:36%" onclick="gfg(this,'erica')" >
+            <img src="{{ url_for('static', filename='images/wechat_kr.jpg') }}" 
+			alt="Nature" style="width:46%" onclick="gfg(this,'kr');">
+			<div style="text-align:center"> 
+             <img src="{{ url_for('static', filename='images/wechat_ricecook.jpg') }}" 
+			 alt="Nature" style="width:57%" onclick="gfg(this,'ricecook');">
+		    </div> 
+            <img src="{{ url_for('static', filename='images/wechat_trista.jpg') }}" 
+            alt="Nature" style="width:53%" onclick="gfg(this,'trista');">
+            <img src="{{ url_for('static', filename='images/wechat_canton.jpg') }}" 
+			alt="Nature" style="width:32%" onclick="gfg(this,'canton');">
+			<div style="text-align:center"> 
+				<h1>特别鸣谢</h1> 
+				<h3>大妈</h3> 
+			<img src="{{ url_for('static', filename='images/wechat_dama.jpg') }}" 
+				alt="Nature" style="width:32%" onclick="gfg(this,'https://zoomquiet.io/');">
+			</div> 
+			<div style="text-align:center"> 
+				<h3> 6py同侪</h3> 
+			<img src="{{ url_for('static', filename='images/wechat_6py.png') }}" 
+				alt="Nature" style="width:32%" onclick="gfg(this);">	
+			</div> 
+			
+		</div>
+		<div class="coloumn"> 
+			<span onclick="this.parentElement.style.display='none'"></span> 
+			<img id="expand" style="width:70%; 
+									height: 50%; 
+									margin-top: 0px;"
+							onclick="openPic()"> 						
+
+		</div> 
+	</div> 
+	<script> 
+		function gfg(imgs,name) { 
+			var expandImg = document.getElementById("expand"); 
+			var imgText = document.getElementById("geeks"); 
+			expandImg.src = imgs.src; 
+			imgText.innerHTML = imgs.alt; 
+			expandImg.parentElement.style.display = "block"; 
+			url = name;
+
+		} 
+		
+		function openPic(){
+			//alert('erica')
+			window.open(url, '_blank');
+			}
+
+		/* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
+		function openNav() {
+ 		 document.getElementById("mySidepanel").style.width = "250px";
+			}
+
+			function closeNav() {
+ 			 document.getElementById("mySidepanel").style.width = "0";
+			}
+
+	</script> 
+</body> 
+
+</html> 

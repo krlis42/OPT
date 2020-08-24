@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <title>300诗歌页</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}">	
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='navbar2.css') }}">
+  </head>
+  <body>
+    <div id="mySidepanel" class="sidepanel" style="background-color:aliceblue">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+      <a href="index">回到首页</a>
+      <a href="poem">更多诗歌</a>
+      <a href="opt">About us</a>
+      <a href="api1">API接口</a>
+      </div>
+      
+      <div id="main">
+      <button class="openbtn" onclick="openNav()" style="background-color:lightblue">☰ 导航</button>  
+      </div>
+
+    <div class="container">
+      {{ pagination.links }}
+    <h2>诗词300首</h2>
+    <h2>
+        <img style="height: 500px; width: 100%;" alt="Avatar" src="{{ url_for('static', filename='images/'+imageIndex+'.jpg') }}">
+    </h2>
+    <div class="table-responsive">
+   
+    <p>{{ data|length }} poems</p>  {# 使用 length 过滤器获取 data 变量的长度 #}
+    
+        {% for eachpoem in data %}  {# data是个list #}
+        <h4 style="font-family: 微软雅黑;">{{ eachpoem.title }}</h4>
+        <p style="font-family: 微软雅黑;">{{ eachpoem.paragraphs }}</p>  {# 等同于data['title'] #}
+        <hr/>
+        {% endfor %}  {# 使用 endfor 标签结束 for 语句 #}
+    <hr/>
+    </div>
+    {{ pagination.links }}
+    </div>
+
+
+  <script> 
+		/* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
+		function openNav() {
+ 		 document.getElementById("mySidepanel").style.width = "250px";
+			}
+
+			function closeNav() {
+ 			 document.getElementById("mySidepanel").style.width = "0";
+			}
+
+  </script> 
+    </body>
+  <footer>
+    <small>&copy;2020 <a href="https://py.101.camp/">OPT from 101camp6py</a></small>
+  </footer>
+</html>
+
+
